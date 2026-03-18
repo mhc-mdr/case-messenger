@@ -6,7 +6,7 @@ import { componentTagger } from "lovable-tagger";
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
   // AÑADE ESTA LÍNEA (Usa el nombre de tu repositorio entre barras)
-  base: "/nombre-de-tu-repositorio/", 
+  base: "/mhc-mdr/", 
   server: {
     host: "::",
     port: 8080,
