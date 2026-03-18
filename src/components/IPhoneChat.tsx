@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import { Send, ChevronLeft, Wifi, Battery, Signal } from "lucide-react";
-import { chatScript } from "@/data/chatScript";
+import { chatScript, type ScriptMessage } from "@/data/chatScript";
 import ChatBubble from "./ChatBubble";
 import TypingIndicator from "./TypingIndicator";
 
@@ -8,6 +8,9 @@ interface Message {
   id: number;
   text: string;
   isUser: boolean;
+  type: "text" | "file";
+  fileName?: string;
+  fileUrl?: string;
 }
 
 const IPhoneChat = () => {
@@ -35,19 +38,29 @@ const IPhoneChat = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const sendContactMessages = async (blocks: string[], startFromScript: number) => {
+  const sendContactMessages = async (blocks: ScriptMessage[], startFromScript: number) => {
     setIsProcessing(true);
     for (let i = 0; i < blocks.length; i++) {
-      setIsTyping(true);
-      // Typing delay proportional to message length, min 1s max 3s
-      const delay = Math.min(3000, Math.max(1000, blocks[i].length * 8));
-      await new Promise((r) => setTimeout(r, delay));
-      setIsTyping(false);
+      const msg = blocks[i];
+      if (msg.type === "text") {
+        setIsTyping(true);
+        const delay = Math.min(3000, Math.max(1000, msg.text.length * 8));
+        await new Promise((r) => setTimeout(r, delay));
+        setIsTyping(false);
+      } else {
+        await new Promise((r) => setTimeout(r, 600));
+      }
 
       const id = nextId.current++;
-      setMessages((prev) => [...prev, { id, text: blocks[i], isUser: false }]);
+      setMessages((prev) => [...prev, {
+        id,
+        text: msg.text,
+        isUser: false,
+        type: msg.type,
+        fileName: msg.fileName,
+        fileUrl: msg.fileUrl,
+      }]);
 
-      // Small pause between consecutive bubbles
       if (i < blocks.length - 1) {
         await new Promise((r) => setTimeout(r, 400));
       }
@@ -61,10 +74,9 @@ const IPhoneChat = () => {
     if (!text || isProcessing) return;
 
     const id = nextId.current++;
-    setMessages((prev) => [...prev, { id, text, isUser: true }]);
+    setMessages((prev) => [...prev, { id, text, isUser: true, type: "text" }]);
     setInputValue("");
 
-    // Trigger next script block
     if (scriptIndex < chatScript.length) {
       sendContactMessages(chatScript[scriptIndex], scriptIndex);
     }
@@ -84,7 +96,6 @@ const IPhoneChat = () => {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-background p-4">
-      {/* iPhone Frame */}
       <div className="relative w-[375px] h-[812px] bg-card rounded-[50px] shadow-2xl border-[3px] border-iphone-frame overflow-hidden flex flex-col">
         {/* Dynamic Island */}
         <div className="absolute top-3 left-1/2 -translate-x-1/2 w-[120px] h-[34px] bg-notch rounded-full z-50" />
@@ -113,10 +124,17 @@ const IPhoneChat = () => {
           </div>
         </div>
 
-        {/* Messages */}
-        <div className="flex-1 overflow-y-auto hide-scrollbar py-3 bg-card">
+        {/* Messages - WhatsApp background */}
+        <div className="flex-1 overflow-y-auto hide-scrollbar py-3 bg-chat-bg chat-wallpaper">
           {messages.map((msg) => (
-            <ChatBubble key={msg.id} text={msg.text} isUser={msg.isUser} />
+            <ChatBubble
+              key={msg.id}
+              text={msg.text}
+              isUser={msg.isUser}
+              type={msg.type}
+              fileName={msg.fileName}
+              fileUrl={msg.fileUrl}
+            />
           ))}
           {isTyping && <TypingIndicator />}
           <div ref={messagesEndRef} />
