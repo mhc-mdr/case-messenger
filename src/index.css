@@ -61,8 +61,8 @@
 
 /* WhatsApp-style chat wallpaper */
 .chat-wallpaper {
-  background-color: hsl(var(--chat-bg));
-  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  background-color: #0b1411;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cdefs%3E%3Cpattern id='p' width='80' height='80' patternUnits='userSpaceOnUse'%3E%3Cpath d='M10 10l5-5M25 8l3 3M50 15l-4 2M65 5l2 6M15 30l6-2M40 25l-3 5M60 35l4-3M8 50l5 2M30 55l-2-4M55 50l3 3M70 45l-5 1M20 70l4-4M45 65l-2 5M65 70l3-2' stroke='%23ffffff' stroke-opacity='0.03' stroke-width='1' fill='none'/%3E%3Ccircle cx='35' cy='12' r='1.5' fill='%23ffffff' fill-opacity='0.02'/%3E%3Ccircle cx='70' cy='28' r='1' fill='%23ffffff' fill-opacity='0.02'/%3E%3Ccircle cx='15' cy='45' r='1.5' fill='%23ffffff' fill-opacity='0.02'/%3E%3Ccircle cx='55' cy='60' r='1' fill='%23ffffff' fill-opacity='0.02'/%3E%3Crect x='5' y='18' width='3' height='2' rx='1' fill='%23ffffff' fill-opacity='0.015'/%3E%3Crect x='42' y='40' width='4' height='2' rx='1' fill='%23ffffff' fill-opacity='0.015'/%3E%3Crect x='68' y='55' width='3' height='2' rx='1' fill='%23ffffff' fill-opacity='0.015'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='400' height='400' fill='url(%23p)'/%3E%3C/svg%3E");
 }
 
 /* Hide scrollbar */
