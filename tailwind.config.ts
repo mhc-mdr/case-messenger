@@ -60,6 +60,7 @@ export default {
         "header-bg": "hsl(var(--header-bg))",
         "iphone-frame": "hsl(var(--iphone-frame))",
         notch: "hsl(var(--notch))",
+        "chat-bg": "hsl(var(--chat-bg))",
       },
       borderRadius: {
         lg: "var(--radius)",
