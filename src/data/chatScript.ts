@@ -52,6 +52,10 @@ export const chatScript: ScriptMessage[][] = [
   [
     { type: "text", text: "¿Alguna información os parece relevante investigadores?" },
   ],
+  //Bloque añadido 1
+   [
+    { type: "text", text: "Debeis añadirlo a vuestro cuadro. Es muy importante. Pensad y deliberad entre todo el grupo y cuando me necesitéis volved a contactarme. Tengo que atender una llamada importante sobre el caso. Espero vuestras noticias" },
+  ],
   // Block 8
   [
     { type: "text", text: "Investigadores, hemos recibido unos registros que podrían ser relevantes para el caso. No contienen remitente ni indicio claro de quién los mantiene, por lo que no podemos abrirlos oficialmente ni confirmar su procedencia." },
