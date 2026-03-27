@@ -65,9 +65,9 @@ export const chatScript: ScriptMessage[][] = [
   // Block 9 - Archivos adjuntos
   [
     { type: "text", text: "Aquí tenéis los registros. Examinadlos con cuidado." },
-    { type: "file", text: "01052026.docx", fileName: "01052026.docx", fileUrl: "./files/01052026.docx" },
-    { type: "file", text: "GastosAbril_2026.xlsx", fileName: "GastosAbril_2026.xlsx", fileUrl: "./files/GastosAbril_2026.xlsx" },
-    { type: "file", text: "Imprimir.docx", fileName: "Imprimir.docx", fileUrl: "./files/Imprimir.docx" },
+    { type: "file", text: "01052026.docx", fileName: "01052026.docx", fileUrl: "/case-messenger/files/01052026.docx" },
+    { type: "file", text: "GastosAbril_2026.xlsx", fileName: "GastosAbril_2026.xlsx", fileUrl: "/case-messenger/files/GastosAbril_2026.xlsx" },
+    { type: "file", text: "Imprimir.docx", fileName: "Imprimir.docx", fileUrl: "/case-messenger/files/Imprimir.docx" },
   ],
   // Block 10
   [
